@@ -40,7 +40,7 @@ int main() {
             }
         }
 
-    // Explorem desde la casella inicial fent un DFS
+    // Explorem des de la casella inicial fent un DFS
     dfs(inici_x, inici_y);
 
     // Imprimim el mapa que ens queda

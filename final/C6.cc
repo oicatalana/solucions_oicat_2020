@@ -11,7 +11,7 @@ int main() {
         vector<int> blancs(n + 1, 0);   // Nombre de rajoles blanques a les i primeres posicions
         vector<int> verds(n + 1, 0);    // Nombre de rajoles verdes a les i primeres posicions
 
-        // Plenem els dos vectors eficientment
+        // Emplenem els dos vectors eficientment
         for (int i = 0; i < n; ++i) {
             if (s[i] == 'B') {
                 blancs[i + 1] = blancs[i] + 1;

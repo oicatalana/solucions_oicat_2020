@@ -18,16 +18,16 @@ int main() {
         dades[destresa][participant] = {val, participant};
       }
 
-    // Ordenem cada destresa per valor
+    // Ordenem cada tipus de problema per nivell de destresa
     for (auto& dades_destresa : dades)
       sort(dades_destresa.begin(), dades_destresa.end());
 
-    vector<bool> descartat(n, false); // Aquí guardarem qui ha estat ja descartat
+    vector<bool> descartat(n, false); // Aquí guardarem qui ja ha estat descartat
 
     bool es_pot = false;
-    while (!dades[0].empty() and !dades[1].empty() and !dades[2].empty()) { // Mentre que quedi algun jugador...
+    while (!dades[0].empty() and !dades[1].empty() and !dades[2].empty()) { // Mentre quedi algun jugador...
 
-      // Mirem si ha un participant que sigui el millor en dos categories  
+      // Mirem si ha un participant que sigui el millor en dues categories  
       bool hi_ha_empat = false;
       if (dades[0].back().second == dades[1].back().second) {   // v.back() és el mateix que v[v.size() - 1]
         descartat[dades[0].back().second] = descartat[dades[1].back().second] = true;
@@ -50,7 +50,7 @@ int main() {
 
       // Si hi ha un empat, ens desfem dels jugadors que no poden formar equip
       for (int destresa = 0; destresa < 3; ++destresa)
-        while (!dades[destresa].empty() and descartat[dades[destresa].back().second]) // ens assegurem de borrar tants jugadors descartats com poguem
+        while (!dades[destresa].empty() and descartat[dades[destresa].back().second]) // ens assegurem d'esborrar tants jugadors descartats com poguem
           dades[destresa].pop_back();
     }
 

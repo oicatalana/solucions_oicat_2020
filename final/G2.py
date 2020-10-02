@@ -37,7 +37,7 @@ def Rainbow(z):
     if z < 1530:
         return (255, 0, 1530 - z)
 
-# Dibuixem cada quadradet
+# Dibuixem cada quadrat
 for j in range(n):
     for i in range(l):
         dib.polygon([(10*i, 10*j), (10*i + 9, 10*j), (10*i + 9, 10*j + 9), (10*i, 10*j + 9)], Rainbow(1200 - M[j][i]))

@@ -14,8 +14,8 @@ def factorial(n):
 img = Image.new('RGB', [20*factorial(n), 20*n], 'White')
 dib = ImageDraw.Draw(img)
 
-columna = 0     # Columna on estem dibuixant el cercles
-fila = [-1]*n   # A quina fila és cada color, -1 si encara no hi és a cap
+columna = 0     # Columna on estem dibuixant els cercles
+fila = [-1]*n   # fila[c] = fila on és el color c, o -1 si encara no hi és a cap
 
 def backtracking(fila_actual):
     global columna

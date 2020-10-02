@@ -31,12 +31,12 @@ struct Domino {
 struct Partida {
     int n_jugadors;                 // Nombre de jugadors
     vector<set<Domino>> jugadors;   // Fitxes dels jugadors. El comparador que hem posat a Domino ordenarà els dominos de més prioritari a menys
-    queue<Domino> reserva;          // Fitxes de reserva. La queue va bé per a mantenir l'ordre de les coses
+    queue<Domino> reserva;          // Fitxes de reserva. La queue va bé per a treure-les en el mateix ordre en que les posem
 
     bool acabada;                   // True si la partida ha acabat
     int jugador_actual;             // Jugador que està jugant
     int lliure_m;                   // Fitxa lliure (valor més petit)
-    int lliure_M;                   // Fitxa lliure (valor més petit)
+    int lliure_M;                   // Fitxa lliure (valor més gran)
     int jugades_fail;               // Nombre de jugades consecutives on no s'ha pogut tirar
 
     // Funció per escriure
@@ -44,7 +44,7 @@ struct Partida {
         cout << char('A' + jugador_actual) << ' ' << text << ' ' << dom.m << ' ' << dom.M << endl;
     }
 
-    // Actualitza jugador actual, jugades fail, i si la partida ha acabat
+    // Actualitza jugador_actual, jugades_fail, i si la partida ha acabat
     void actualitza(bool fail) {
         jugador_actual = (jugador_actual + 1)%n_jugadors;
         if (fail)
@@ -89,9 +89,9 @@ struct Partida {
 
     // Una jugada
     void juga() {
-        bool jugat = false;     // True si tenim jugada viable
+        bool jugat = false;     // True si es pot jugar
         for (Domino domino : jugadors[jugador_actual]) {
-            // Per a cada domino, seguint la prioritat, busquem una jugada viable
+            // Per a cada domino, seguint la prioritat, mirem si podem fer una jugada amb ell
             if (lliure_M == domino.m) {
                 jugat = true;           // Marquem com a jugat
                 lliure_M = domino.M;    // Actualitzem l'extrem lliure
@@ -117,7 +117,7 @@ struct Partida {
                 if (jugadors[jugador_actual].empty())   // Si el jugador ha acabat, la partida també
                     acabada = true;
 
-                // Escrivim, actualizem i tanquem.
+                // Escrivim, actualizem i parem de mirar més fitxes.
                 escriu("tira", domino);
                 actualitza(false);
                 break;
@@ -125,7 +125,7 @@ struct Partida {
         }
 
         if (not jugat) {
-            if (reserva.empty()) {  // Si no podem seguir robant, contem un fail més i actualitzem
+            if (reserva.empty()) {  // Si no podem seguir robant, actualitzem per a comptar un fail més
                 actualitza(true);
             }
             else {                  // Si podem robar, robem i tornem a jugar
@@ -135,7 +135,7 @@ struct Partida {
         }
     }
 
-    // CONSTRUCTOR
+    // Constructor
     Partida(int p) : n_jugadors(p), jugadors(vector<set<Domino>>(p)), acabada(false), jugades_fail(0) { // Iniciem variables
         for (int jugador = 0; jugador < p; ++jugador) {
             for (int i = 0; i < 7; ++i) {

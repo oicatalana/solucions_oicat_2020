@@ -6,7 +6,7 @@ def f(n):
 
 raonables = []
 
-for i in range(1, 1000):    # Si i > 999, i segur que no és raonable
+for i in range(1, 1000):    # Si i > 999, no pot ser raonable
     n = i
     for rep in range(1000): # No té més sentit fer més de 1000 iteracions
         n = f(n)
