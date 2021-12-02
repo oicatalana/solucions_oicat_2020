@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
     int V, n;
-    while (cin >> V >> n){
+    while (cin >> V >> n) {
         if (n == 0)
             return 0;
 

@@ -6,7 +6,7 @@ int main() {
     while (cin >> n) {
         int ones = 0;
         bool ok = 0;
-        for (int i = 0; i < n; ++i){
+        for (int i = 0; i < n; ++i) {
             int x;
             cin >> x;
             if (x == 1)

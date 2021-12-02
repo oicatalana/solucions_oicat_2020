@@ -1,6 +1,6 @@
 # Retorna true si el nombre es autodescriptiu
 def és_autodescriptiu(n):
-    rep = [0]*10        # rep[i]: Nombre de cops que apareix el caracter i
+    rep = [0]*10        # rep[i]: Nombre de cops que apareix el caràcter i
     num = [None]*10     # num[i]: i-èssim caràcter de n
 
     # Anem construint rep i num

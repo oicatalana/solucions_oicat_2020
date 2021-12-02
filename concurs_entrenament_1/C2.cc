@@ -11,7 +11,7 @@ int main() {
 				cin >> x;
 
 		string s;
-		while (cin >> s){
+		while (cin >> s) {
 			if (s == "fila") {
 				int x;
 				cin >> x;
