@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-int main(){
+int main() {
     long long int n;
     while (cin >> n) {
         if (n == 1)
